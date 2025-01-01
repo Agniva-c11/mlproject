@@ -5,6 +5,7 @@ import numpy as np
 from src.exeption import CustomException
 import dill
 from sklearn.metrics import r2_score
+from sklearn.model_selection import GridSearchCV
 
 def save_object(file_path, obj):
     try:
@@ -22,6 +23,7 @@ def evaluate_models(X_train,X_test, y_train, y_test, models):
         
         for i in range(len(list(models))):
             model = list(models.values())[i]
+            
             model.fit(X_train, y_train)
             y_train_pred = model.predict(X_train)
             y_test_pred = model.predict(X_test)
